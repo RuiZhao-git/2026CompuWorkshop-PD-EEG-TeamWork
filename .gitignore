@@ -1,0 +1,26 @@
+# Data files (kept local per machine, not committed)
+data/
+*.fif
+
+# Local environment configuration
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated PPTX (regenerable from Marp source)
+slides/*.pptx

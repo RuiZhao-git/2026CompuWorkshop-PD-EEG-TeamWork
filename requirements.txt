@@ -1,0 +1,9 @@
+mne
+neurolib
+numpy
+scipy
+matplotlib
+pandas
+ipywidgets
+jupyter
+python-dotenv
