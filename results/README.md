@@ -6,7 +6,7 @@ Generated outputs from the pipeline scripts.
 
 | File | Produced by | Description |
 |------|-------------|-------------|
-| `features.csv` | `scripts/01_extract_features.py` | Per-subject alpha peak frequency and group label |
+| `features.csv` | `scripts/01_extract_features.py` | Per-subject features: alpha peak frequency + relative band powers (theta, alpha, beta), computed on the average PSD over posterior channels |
 | `peak_curve.csv` | `scripts/02_simulate_network.py` | Model peak frequency for a grid of tau_I values |
 | `fitted_tau.csv` | `scripts/03_fit_per_subject.py` | Per-subject fitted tau_I |
 | `figures/` | various | Plots produced during analysis |
