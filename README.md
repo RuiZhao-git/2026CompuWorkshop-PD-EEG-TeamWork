@@ -10,9 +10,12 @@ Team project: modelling cortical EEG slowing in Parkinson's disease.
 | Name | Role |
 |------|------|
 | Rui  | data preprocessing and feature extraction |
-| Rui  | Wilson-Cowan network implementation |
+| Rui  | feature-level group comparison |
+| Rui  | Wilson-Cowan network and tau sweep |
 | TBD  | per-subject parameter fitting |
-| Rui  | coordination, slides, write-up |
+| TBD  | group comparison on fitted tau values |
+|      | slides |
+| Rui  | repository, documentation, write-up |
 
 ## Hypothesis
 
