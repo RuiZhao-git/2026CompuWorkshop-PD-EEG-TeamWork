@@ -3,6 +3,8 @@
 Workshop on Computational Neurology, SoSe 2026.
 Team project: modelling cortical EEG slowing in Parkinson's disease.
 
+> New here or got lost? See [`docs/plain_explanation.md`](docs/plain_explanation.md) for a plain-language walkthrough of the whole project.
+
 ## Team
 
 | Name | Role |
