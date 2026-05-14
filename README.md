@@ -9,10 +9,10 @@ Team project: modelling cortical EEG slowing in Parkinson's disease.
 
 | Name | Role |
 |------|------|
-| TBD  | data preprocessing and feature extraction |
-| TBD  | Wilson-Cowan network implementation |
+| Rui  | data preprocessing and feature extraction |
+| Rui  | Wilson-Cowan network implementation |
 | TBD  | per-subject parameter fitting |
-| TBD  | coordination, slides, write-up |
+| Rui  | coordination, slides, write-up |
 
 ## Hypothesis
 
