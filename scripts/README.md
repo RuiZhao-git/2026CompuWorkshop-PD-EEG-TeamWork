@@ -6,10 +6,10 @@ Numbered end-to-end pipeline scripts. Each one runs from the command line and pr
 
 | File | Reads from | Writes to | Status |
 |------|-----------|-----------|--------|
-| `01_extract_features.py` | EEG .fif files in `$PD_DATA_DIR` | `results/features.csv` | done |
-| `02_simulate_network.py` | (no input, runs the model) | `results/peak_curve.csv` | done |
+| `01_extract_features.py` | EEG .fif files in `$PD_DATA_DIR` | `results/features.csv` | done by Rui |
+| `02_simulate_network.py` | (no input, runs the model) | `results/peak_curve.csv` | done by Rui |
 | `03_fit_per_subject.py` | `results/features.csv` and `results/peak_curve.csv` | `results/fitted_tau.csv` | TBD |
-| `04_compare_features.py` | `results/features.csv` | `results/group_comparison.csv` + box plots | done |
+| `04_compare_features.py` | `results/features.csv` | `results/group_comparison.csv` + box plots | done by Rui |
 | `05_compare_tau.py` | `results/fitted_tau.csv` | `results/group_comparison_tau.csv` + box plots | TBD |
 
 `features.csv` columns: `subject_id, group, alpha_peak_hz, alpha_power, theta_power, beta_power`

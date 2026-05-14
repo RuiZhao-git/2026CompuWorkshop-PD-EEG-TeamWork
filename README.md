@@ -63,11 +63,11 @@ Three branches share the same `features.csv` extracted from raw EEG:
                                   + box plots                                  + box plots
 ```
 
-- **(done)** `01_extract_features.py` reads the raw `.fif` files and writes `results/features.csv` (per-subject alpha peak frequency + relative band powers).
-- **(done)** `02_simulate_network.py` runs the Wilson-Cowan network across a grid of tau_I values, writes `results/peak_curve.csv` (tau_I to simulated peak frequency lookup).
-- **(TBD)** `03_fit_per_subject.py` joins `features.csv` and `peak_curve.csv` to assign each subject a personal tau_I, writes `results/fitted_tau.csv`.
-- **(done)** `04_compare_features.py` runs group statistics on `features.csv` (data-level hypothesis test, independent of model).
-- **(TBD)** `05_compare_tau.py` runs group statistics on `fitted_tau.csv` (model-level hypothesis test, expressed in terms of the model parameter).
+- **(done by Rui)** `01_extract_features.py` reads the raw `.fif` files and writes `results/features.csv` (per-subject alpha peak frequency + relative band powers).
+- **(done by Rui)** `02_simulate_network.py` runs the Wilson-Cowan network across a grid of tau_I values, writes `results/peak_curve.csv` (tau_I to simulated peak frequency lookup).
+- `03_fit_per_subject.py` joins `features.csv` and `peak_curve.csv` to assign each subject a personal tau_I, writes `results/fitted_tau.csv`.
+- **(done by Rui)** `04_compare_features.py` runs group statistics on `features.csv` (data-level hypothesis test, independent of model).
+- `05_compare_tau.py` runs group statistics on `fitted_tau.csv` (model-level hypothesis test, expressed in terms of the model parameter).
 
 ## Folders
 

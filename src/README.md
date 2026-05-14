@@ -12,9 +12,9 @@ from src.fitting import fit_tau_for_subject
 
 | File | Purpose | Status |
 |------|---------|--------|
-| `features.py` | Functions to compute PSD, alpha peak frequency, band power from EEG | done |
-| `model.py` | Wilson-Cowan network setup (wrapper around neurolib), simulation runners | done |
-| `stats.py` | Non-parametric group comparison helpers (Mann-Whitney U, rank-biserial) | done |
+| `features.py` | Functions to compute PSD, alpha peak frequency, band power from EEG | done by Rui |
+| `model.py` | Wilson-Cowan network setup (wrapper around neurolib), simulation runners | done by Rui |
+| `stats.py` | Non-parametric group comparison helpers (Mann-Whitney U, rank-biserial) | done by Rui |
 | `fitting.py` | Per-subject parameter inference: invert the peak-vs-tau curve to get tau_I | TBD |
 
 ## Conventions
