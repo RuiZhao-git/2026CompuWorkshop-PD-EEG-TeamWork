@@ -56,20 +56,21 @@ Three branches share the same `features.csv` extracted from raw EEG:
                                 |
                                 v
 .fif --> 01_extract_features.py --> features.csv --> 03_fit_per_subject.py --> fitted_tau.csv
-         (uses src/features.py)            |          (uses src/fitting.py)
-                                           |
-                                           v
-                                  04_compare_features.py
-                                  (stats + box plots)
-                                           |
-                                           v
-                                  group stats + figures/
+         (uses src/features.py)            |          (uses src/fitting.py)            |
+                                           v                                           v
+                                  04_compare_features.py                       05_compare_tau.py
+                                  (data-level stats)                           (model-level stats)
+                                           |                                           |
+                                           v                                           v
+                                  group_comparison.csv                         group_comparison_tau.csv
+                                  + box plots                                  + box plots
 ```
 
 - `01_extract_features.py` reads the raw `.fif` files and writes `results/features.csv` (per-subject alpha peak frequency + relative band powers).
 - `02_simulate_network.py` runs the Wilson-Cowan network across a grid of tau_I values, writes `results/peak_curve.csv` (tau_I to simulated peak frequency lookup).
 - `03_fit_per_subject.py` joins `features.csv` and `peak_curve.csv` to assign each subject a personal tau_I, writes `results/fitted_tau.csv`.
 - `04_compare_features.py` runs group statistics on `features.csv` (data-level hypothesis test, independent of model).
+- `05_compare_tau.py` runs group statistics on `fitted_tau.csv` (model-level hypothesis test, expressed in terms of the model parameter).
 
 ## Folders
 
