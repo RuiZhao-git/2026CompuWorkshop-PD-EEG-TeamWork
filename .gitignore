@@ -24,3 +24,6 @@ Thumbs.db
 
 # Generated PPTX (regenerable from Marp source)
 slides/*.pptx
+
+# Large regenerable cache from archived solo exploration (~18 MB)
+archive/individual_prep_may_8/cache/
