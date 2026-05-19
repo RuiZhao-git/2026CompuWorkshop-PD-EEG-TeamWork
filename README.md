@@ -82,6 +82,7 @@ Each folder has its own README explaining what goes in it.
 - `slides/`: Marp markdown for class presentations
 - `docs/`: meeting notes and design decisions (including `docs/figures/pipeline.svg|png`)
 - `results/`: generated outputs (features, figures, fitted parameters)
+- `archive/`: read-only historical material from before the team phase (see `archive/README.md`)
 
 ## Workflow
 
