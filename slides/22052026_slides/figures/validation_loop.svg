@@ -48,7 +48,7 @@
   <text x="200" y="286" text-anchor="middle" fill="white"
         font-size="14" font-weight="600">feature extraction + fitting</text>
   <text x="200" y="306" text-anchor="middle" fill="#a7f3d0"
-        font-size="11">scripts/01 + scripts/03</text>
+        font-size="11">same as for real data</text>
 
   <!-- arrow -->
   <line x1="200" y1="324" x2="200" y2="354" stroke="#6b7280"
