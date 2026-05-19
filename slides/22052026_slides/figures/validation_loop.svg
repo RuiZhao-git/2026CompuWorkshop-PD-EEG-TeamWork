@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 560"
+     font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,10 L10,5 z" fill="#6b7280" />
+    </marker>
+    <marker id="arrowOpen" markerWidth="10" markerHeight="10" refX="9" refY="5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,10 L10,5 z" fill="#b45309" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="200" y="32" text-anchor="middle" fill="#111827"
+        font-size="14" font-weight="700">Proposed validation loop</text>
+
+  <!-- 1. Known input tau_inh (highlighted, input we set) -->
+  <rect x="60" y="60" width="280" height="64" rx="8"
+        fill="#fef3c7" stroke="#b45309" stroke-width="2" />
+  <text x="200" y="86" text-anchor="middle" fill="#92400e"
+        font-size="14" font-weight="700">Known τ_inh</text>
+  <text x="200" y="106" text-anchor="middle" fill="#92400e"
+        font-size="11">value we choose (e.g. 18 ms)</text>
+
+  <!-- arrow + label -->
+  <line x1="200" y1="124" x2="200" y2="154" stroke="#6b7280"
+        stroke-width="2" marker-end="url(#arrow)" />
+  <text x="210" y="143" fill="#374151" font-size="11" font-style="italic">Wilson-Cowan model</text>
+
+  <!-- 2. synthetic EEG -->
+  <rect x="60" y="160" width="280" height="64"
+        fill="#f9fafb" stroke="#6b7280" stroke-width="1.5" />
+  <text x="200" y="186" text-anchor="middle" fill="#1f2937"
+        font-size="14" font-weight="600">Synthetic EEG signal</text>
+  <text x="200" y="206" text-anchor="middle" fill="#6b7280"
+        font-size="11">simulated time series, n samples</text>
+
+  <!-- arrow + label -->
+  <line x1="200" y1="224" x2="200" y2="254" stroke="#6b7280"
+        stroke-width="2" marker-end="url(#arrow)" />
+  <text x="210" y="243" fill="#374151" font-size="11" font-style="italic">same pipeline as on real data</text>
+
+  <!-- 3. fitting pipeline -->
+  <rect x="60" y="260" width="280" height="64" rx="8"
+        fill="#0f766e" stroke="#0f766e" />
+  <text x="200" y="286" text-anchor="middle" fill="white"
+        font-size="14" font-weight="600">feature extraction + fitting</text>
+  <text x="200" y="306" text-anchor="middle" fill="#a7f3d0"
+        font-size="11">scripts/01 + scripts/03</text>
+
+  <!-- arrow -->
+  <line x1="200" y1="324" x2="200" y2="354" stroke="#6b7280"
+        stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 4. fitted output -->
+  <rect x="60" y="360" width="280" height="64" rx="8"
+        fill="#fef3c7" stroke="#b45309" stroke-width="2" />
+  <text x="200" y="386" text-anchor="middle" fill="#92400e"
+        font-size="14" font-weight="700">Recovered τ_inh</text>
+  <text x="200" y="406" text-anchor="middle" fill="#92400e"
+        font-size="11">should match the known input</text>
+
+  <!-- comparison arrow back up (curved) -->
+  <path d="M 60 392 Q 20 250 60 92" fill="none" stroke="#b45309"
+        stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arrowOpen)" />
+  <text x="30" y="245" text-anchor="middle" fill="#b45309"
+        font-size="12" font-weight="600" transform="rotate(-90 30 245)">?=</text>
+
+  <!-- bottom outcome -->
+  <text x="200" y="468" text-anchor="middle" fill="#111827"
+        font-size="13" font-weight="600">If recovered ≈ known:</text>
+  <text x="200" y="486" text-anchor="middle" fill="#374151" font-size="11">the fitting procedure is sound,</text>
+  <text x="200" y="502" text-anchor="middle" fill="#374151" font-size="11">and the differences we find on real data</text>
+  <text x="200" y="518" text-anchor="middle" fill="#374151" font-size="11">are likely genuine rather than artifacts.</text>
+</svg>
