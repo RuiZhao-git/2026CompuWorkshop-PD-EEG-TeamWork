@@ -22,7 +22,9 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Generated PPTX (regenerable from Marp source)
+# Scratch PPTX renders at the top of slides/. Finalised decks keep
+# their exported .pptx inside their own dated subfolder, e.g.
+# slides/22052026_slides/, and those are committed.
 slides/*.pptx
 
 # Large regenerable cache from archived solo exploration (~18 MB)
