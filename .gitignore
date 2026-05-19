@@ -29,3 +29,6 @@ slides/*.pptx
 
 # Large regenerable cache from archived solo exploration (~18 MB)
 archive/individual_prep_may_8/cache/
+
+# Personal Claude-session continuity doc, not a team artifact
+HANDOFF.md
