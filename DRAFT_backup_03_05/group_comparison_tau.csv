@@ -1,2 +1,0 @@
-parameter,n_Control,n_PD,median_Control,median_PD,median_diff_PD_minus_Control,u_statistic,p_value_one_sided_PD_greater,p_value_two_sided,rank_biserial
-tau_inh_ms,49,100,18.250000,21.500000,3.250000,3307.500000,0.000247,0.000493,0.350000
