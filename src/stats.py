@@ -39,7 +39,7 @@ def rank_biserial(u_stat, n1, n2):
 
 
 def compare_groups(df, feature, group_col="group",
-                   group_a="Control", group_b="PD"):
+                   group_a="Control", group_b="PD", alternative="two-sided"):
     """Compare two groups on one numeric feature with Mann-Whitney U.
 
     Parameters
@@ -55,6 +55,11 @@ def compare_groups(df, feature, group_col="group",
         Group labels. The U statistic is computed with `group_a` first,
         so the sign of the resulting rank-biserial r is interpreted as
         "positive means group_a had larger values than group_b".
+    alternative : str
+        Passed straight to scipy's `mannwhitneyu`: "two-sided" (default),
+        "less", or "greater", interpreted relative to `group_a`. For a
+        directional hypothesis "group_b is larger than group_a" (e.g. PD has
+        a larger fitted tau than Control), pass `alternative="less"`.
 
     Returns
     -------
@@ -65,7 +70,7 @@ def compare_groups(df, feature, group_col="group",
     values_a = df.loc[df[group_col] == group_a, feature].values
     values_b = df.loc[df[group_col] == group_b, feature].values
 
-    u_stat, p_val = mannwhitneyu(values_a, values_b, alternative="two-sided")
+    u_stat, p_val = mannwhitneyu(values_a, values_b, alternative=alternative)
 
     return {
         "feature": feature,

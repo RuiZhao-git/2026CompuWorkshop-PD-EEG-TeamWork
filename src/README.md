@@ -5,7 +5,7 @@ Reusable Python modules. Anything in here can be imported from scripts and noteb
 ```python
 from src.features import compute_psd
 from src.model import build_network
-from src.fitting import fit_tau_for_subject
+from src.fitting import invert_peak_curve
 ```
 
 ## Files planned for this folder
@@ -15,7 +15,7 @@ from src.fitting import fit_tau_for_subject
 | `features.py` | Functions to compute PSD, alpha peak frequency, band power from EEG | done by Rui |
 | `model.py` | Wilson-Cowan network setup (wrapper around neurolib), simulation runners | done by Rui |
 | `stats.py` | Non-parametric group comparison helpers (Mann-Whitney U, rank-biserial) | done by Rui |
-| `fitting.py` | Per-subject parameter inference: invert the peak-vs-tau curve to get tau_I | TBD |
+| `fitting.py` | Per-subject parameter inference: invert the peak-vs-tau curve to get tau_inh | done |
 
 ## Conventions
 
