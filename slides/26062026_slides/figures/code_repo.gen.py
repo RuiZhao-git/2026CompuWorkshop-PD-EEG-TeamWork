@@ -231,11 +231,13 @@ T(770, 212, "feature branches, reviewed, merged into main", 11.5, MUTE, 400)
 main_y = 480
 gx0, gx1 = 656, 1140
 # branches: (name, color, lane_y, x_start, x_end, n_commits, pr)
+# rui is the long-running main development line; teammates make lighter,
+# occasional contributions (kept understated, not a one-person spotlight).
 branches = [
-    ("rui", BLUE, 306, 690, 1060, 4, "#7"),
-    ("melissa", ORANGE, 352, 720, 840, 2, "#11"),
-    ("friedrich", PURPLE, 352, 894, 1006, 2, "#16"),
-    ("jan", TEAL, 398, 776, 922, 2, "#21"),
+    ("rui", BLUE, 306, 676, 1066, 4, ""),
+    ("melissa", ORANGE, 352, 726, 838, 1, ""),
+    ("friedrich", PURPLE, 352, 902, 1006, 1, ""),
+    ("jan", TEAL, 398, 800, 904, 1, ""),
 ]
 
 # main trunk (its name label sits to the left of where the line starts)
@@ -281,7 +283,7 @@ for br in branches:
     branch(*br)
 
 # stats line under the graph
-T(612, 540, "46 commits  ·  feature branches → reviewed → merged into main  ·  fully reproducible",
+T(612, 540, "50 commits  ·  feature branches → reviewed → merged into main  ·  fully reproducible",
   12, GREY, 500)
 
 P.append("</svg>")
