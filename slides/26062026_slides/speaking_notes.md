@@ -17,17 +17,16 @@ we would go next, and what each of us took from the course.
 
 ## Slide 1, Hypotheses
 
-Our hypothesis, based on the literature, was that compared to age-matched healthy
-controls, Parkinson's patients at rest show three changes: the alpha peak
-frequency slows down, theta-band power increases, and cortical beta-band power
-decreases. This figure tests all three on 149 subjects. Each row is one feature.
-The dot is the effect size and the line is its 95 percent confidence interval.
-Left of the centre line means lower in Parkinson's, right means higher. Alpha
-peak is clearly to the left, so it slows. Theta is to the right, so it increases.
-Beta is to the left, so it decreases. All three intervals are well away from
-zero, so all three predictions are confirmed. The grey one, alpha power, sits on
-zero: it does not change, which is why we say alpha peak slowing and not alpha
-power loss.
+Our three predictions from the literature, all in one figure: the average
+posterior power spectrum, controls in blue, patients in coral, with the standard
+error shaded. You can read the three changes straight off the curves. In the
+theta band, four to eight hertz, the patient curve sits above the control curve,
+so theta power is higher. Around the alpha peak the patient curve is shifted to
+the left, so the alpha rhythm slows. In the beta band, thirteen to thirty hertz,
+the control curve is above the patient curve, so beta power is lower. The line
+below gives the numbers: on 149 subjects the alpha peak drops from 9.25 to 8.00
+hertz, theta up and beta down are both highly significant, and alpha power itself
+does not change, which is why we say alpha peak slowing rather than alpha loss.
 
 ---
 
@@ -111,3 +110,11 @@ placeholders on the slide before the talk.)
 For reference, the full per-subject distributions behind the effect sizes. The
 box shows the median and quartiles, the dots are individual subjects. Alpha peak
 shifts down in patients, theta up, beta down, and alpha power is unchanged.
+
+---
+
+## Appendix, Effect sizes (only if asked)
+
+The same four features as standardised effect sizes: rank-biserial correlation
+with a 95 percent bootstrap confidence interval. Alpha peak, theta, and beta all
+sit well away from zero in the predicted direction; alpha power sits on zero.
