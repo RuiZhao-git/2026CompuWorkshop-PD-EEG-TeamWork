@@ -18,6 +18,8 @@ REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 SANS = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Helvetica, Arial, sans-serif"
 BLUE = "#185FA5"
 CORAL = "#a8431f"
+GREEN = "#059669"   # excitatory population (E)
+PURPLE = "#7c3aed"  # inhibitory population (I)
 INK = "#0f172a"
 SLATE = "#334155"
 GREY = "#64748b"
@@ -71,9 +73,9 @@ def line(x1, y1, x2, y2, stroke, sw=1, dash=None, marker=None, op=None):
 P.append(f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" font-family="{SANS}">')
 P.append('<defs>')
 P.append(f'<marker id="ex" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">'
-         f'<path d="M0,0 L0,9 L8,4.5 z" fill="{BLUE}"/></marker>')
+         f'<path d="M0,0 L0,9 L8,4.5 z" fill="{GREEN}"/></marker>')
 P.append(f'<marker id="bar" markerWidth="10" markerHeight="16" refX="3" refY="8" orient="auto">'
-         f'<rect x="1" y="1.5" width="2.8" height="13" rx="1.2" fill="{CORAL}"/></marker>')
+         f'<rect x="1" y="1.5" width="2.8" height="13" rx="1.2" fill="{PURPLE}"/></marker>')
 P.append(f'<marker id="sh" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5" orient="auto">'
          f'<path d="M0,0 L0,9 L8,4.5 z" fill="{GREY}"/></marker>')
 P.append('</defs>')
@@ -94,37 +96,35 @@ for i in range(8):
     for j in range(i + 1, 8):
         line(nodes[i][0], nodes[i][1], nodes[j][0], nodes[j][1], "#9ec3f2", 0.8, op=0.5)
 for i, (x, y) in enumerate(nodes):
-    if i == 1:  # highlight one node
-        circle(f"{x:.1f}", f"{y:.1f}", 11, "none", CORAL, 2, dash="3 2.5")
-        circle(f"{x:.1f}", f"{y:.1f}", 7, CORAL)
-    else:
-        circle(f"{x:.1f}", f"{y:.1f}", 7, BLUE)
+    if i == 1:  # mark one node (neutral, so it is not read as a Control/PD node)
+        circle(f"{x:.1f}", f"{y:.1f}", 11, "none", SLATE, 2, dash="3 2.5")
+    circle(f"{x:.1f}", f"{y:.1f}", 7, "#64748b")
 T(ncx, ncy + nr + 24, "8 nodes, all-to-all coupling", 13, SLATE, 500, "middle")
 
-# zoom from the highlighted node to the E-I loop
+# zoom from the marked node to the E-I loop
 hx, hy = nodes[1]
-line(hx + 6, hy + 6, 248, 232, CORAL, 1.3, dash="4 3", op=0.6)
-line(hx + 6, hy + 6, 150, 232, CORAL, 1.3, dash="4 3", op=0.6)
+line(hx + 6, hy + 6, 248, 232, MUTE, 1.3, dash="4 3", op=0.7)
+line(hx + 6, hy + 6, 150, 232, MUTE, 1.3, dash="4 3", op=0.7)
 
-# the E-I loop
+# the E-I loop  (E = green excitatory, I = purple inhibitory)
 ex_c, in_c, ny = 150, 252, 300
-circle(ex_c, ny, 30, BLUE)
+circle(ex_c, ny, 30, GREEN)
 T(ex_c, ny + 9, "E", 26, "#ffffff", 600, "middle")
 T(ex_c, ny + 52, "excitatory", 13, SLATE, 400, "middle")
-circle(in_c, ny, 30, CORAL)
+circle(in_c, ny, 30, PURPLE)
 T(in_c, ny + 9, "I", 26, "#ffffff", 600, "middle")
 T(in_c, ny + 52, "inhibitory", 13, SLATE, 400, "middle")
 # excites (E -> I, over the top)
 raw(f'<path d="M {ex_c+26} {ny-16} Q {(ex_c+in_c)/2} {ny-58} {in_c-26} {ny-16}" '
-    f'fill="none" stroke="{BLUE}" stroke-width="2.6" marker-end="url(#ex)"/>')
-T((ex_c + in_c) / 2, ny - 48, "excites", 14, BLUE, 600, "middle")
+    f'fill="none" stroke="{GREEN}" stroke-width="2.6" marker-end="url(#ex)"/>')
+T((ex_c + in_c) / 2, ny - 48, "excites", 14, GREEN, 600, "middle")
 # inhibits (I -> E, under the bottom)
 raw(f'<path d="M {in_c-26} {ny+16} Q {(ex_c+in_c)/2} {ny+58} {ex_c+26} {ny+16}" '
-    f'fill="none" stroke="{CORAL}" stroke-width="2.6" marker-end="url(#bar)"/>')
-T((ex_c + in_c) / 2, ny + 64, "inhibits", 14, CORAL, 600, "middle")
+    f'fill="none" stroke="{PURPLE}" stroke-width="2.6" marker-end="url(#bar)"/>')
+T((ex_c + in_c) / 2, ny + 64, "inhibits", 14, PURPLE, 600, "middle")
 # tau_inh knob tag
-rrect(118, 388, 164, 30, 15, "#fdf1ec", CORAL, 1.4)
-T(140, 408, "τ_inh", 14.5, CORAL, 700, "start")
+rrect(118, 388, 164, 30, 15, "#f5f3ff", PURPLE, 1.4)
+T(140, 408, "τ_inh", 14.5, PURPLE, 700, "start")
 T(180, 408, "the one knob", 13.5, SLATE, 500, "start")
 
 # ================================================================ ZONE 2: THE DIAL
