@@ -25,8 +25,10 @@ so theta power is higher. Around the alpha peak the patient curve is shifted to
 the left, so the alpha rhythm slows. In the beta band, thirteen to thirty hertz,
 the control curve is above the patient curve, so beta power is lower. The line
 below gives the numbers: on 149 subjects the alpha peak drops from 9.25 to 8.00
-hertz, theta up and beta down are both highly significant, and alpha power itself
-does not change, which is why we say alpha peak slowing rather than alpha loss.
+hertz, theta up and beta down are both highly significant. We list a fourth
+prediction too, alpha power, greyed out because it is a null result: alpha power
+does not change. That null is the point, the change is in frequency, not
+amplitude, which is why we say alpha peak slowing rather than alpha loss.
 
 ---
 

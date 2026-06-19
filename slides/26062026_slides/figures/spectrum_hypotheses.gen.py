@@ -122,6 +122,20 @@ marker(1, 5.6, 0.066, 6.4, 0.085)     # theta: PD curve above control
 marker(2, 8.4, 0.110, 8.4, 0.101)     # alpha peak (slowing)
 marker(3, 20.0, 0.050, 20.0, 0.020)   # beta: control curve above PD
 
+# (4) alpha power UNCHANGED: a muted marker at the alpha-band crossing, where the
+# curves meet (PD higher at low alpha, control higher at high alpha -> equal area).
+sub = d[(d.freq_hz >= 8.5) & (d.freq_hz <= 12.5)].reset_index(drop=True)
+dif = (sub.pd_mean - sub.control_mean).values
+cross_f = 10.0
+for i in range(len(dif) - 1):
+    if dif[i] >= 0 > dif[i + 1]:
+        cross_f = float(sub.freq_hz.iloc[i]); break
+cross_p = (val("control_mean", cross_f) + val("pd_mean", cross_f)) / 2
+cx4, cy4 = X(11.4), Y(0.082)
+line(cx4, cy4, X(cross_f), Y(cross_p), "#cbd5e1", 1.4)
+P.append(f'<circle cx="{cx4:.1f}" cy="{cy4:.1f}" r="14" fill="{MUTE}" stroke="#ffffff" stroke-width="2"/>')
+T(cx4, cy4 + 6, "4", 17, "#ffffff", 700, "middle")
+
 # legend (top-right inside plot)
 lx, ly = PX1 - 168, PY0 + 16
 P.append(f'<rect x="{lx-12}" y="{ly-16}" width="178" height="50" rx="9" fill="#ffffff" fill-opacity="0.86" stroke="{LINE}"/>')
