@@ -21,9 +21,9 @@ GREY = "#64748b"
 MUTE = "#94a3b8"
 LINE = "#e2e8f0"
 
-W, H = 920, 440
+W, H = 920, 430
 FMIN, FMAX = 3.0, 34.0
-YMAX = 0.11
+YMAX = 0.115
 PX0, PX1 = 84, 846     # plot box x (left axis .. right)
 PY0, PY1 = 60, 372     # plot box y (top .. bottom axis)
 
@@ -85,9 +85,6 @@ for mid, col in [("up", CORAL), ("dn", BLUE), ("lf", SLATE)]:
 P.append('</defs>')
 P.append(f'<rect width="{W}" height="{H}" rx="16" fill="#ffffff"/>')
 
-# small caption top-left
-T(PX0, 36, "Posterior EEG power spectrum, group average  ±SEM", 15, GREY, 500)
-
 # frequency-band shading + labels
 for lo, hi, fill, lbl in [(4, 8, "#f0fdf4", "THETA"), (8, 13, "#fffbeb", "ALPHA"),
                           (13, 30, "#f1f5f9", "BETA")]:
@@ -114,24 +111,16 @@ P.append(f'<path d="{band_path("pd_mean","pd_sem")}" fill="{CORAL}" fill-opacity
 P.append(f'<path d="{curve_path("control_mean")}" fill="none" stroke="{BLUE}" stroke-width="2.8" stroke-linejoin="round"/>')
 P.append(f'<path d="{curve_path("pd_mean")}" fill="none" stroke="{CORAL}" stroke-width="2.8" stroke-linejoin="round"/>')
 
-# ---- annotations: the three predicted changes ----
-# theta up: arrow from control level up to PD level at 6 Hz
-fx = 5.8
-yc, yp = Y(val("control_mean", fx)), Y(val("pd_mean", fx))
-line(X(fx), yc - 2, X(fx), yp + 8, CORAL, 2.2, marker="up")
-T(X(5.6), Y(0.103), "theta power", 14.5, CORAL, 600, "middle")
-T(X(5.6), Y(0.097), "higher in PD", 14.5, CORAL, 600, "middle")
+# ---- numbered markers: the three changes, keyed to the list above the figure ----
+def marker(num, fx, fy, tip_f, tip_p):
+    cx, cy = X(fx), Y(fy)
+    line(cx, cy, X(tip_f), Y(tip_p), "#94a3b8", 1.4)
+    P.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="14" fill="{SLATE}" stroke="#ffffff" stroke-width="2"/>')
+    T(cx, cy + 6, str(num), 17, "#ffffff", 700, "middle")
 
-# alpha peak slows: leftward arrow above the alpha peak
-T(X(11.3), Y(0.107), "alpha peak slows", 14.5, SLATE, 600, "middle")
-line(X(10.6), Y(0.099), X(8.7), Y(0.099), SLATE, 2.2, marker="lf")
-
-# beta down: arrow from control level down to PD level at ~21 Hz
-fx = 20.5
-yc, yp = Y(val("control_mean", fx)), Y(val("pd_mean", fx))
-line(X(fx), yc - 6, X(fx), yp - 1, BLUE, 2.2, marker="dn")
-T(X(22.5), Y(0.066), "beta power", 14.5, BLUE, 600, "middle")
-T(X(22.5), Y(0.060), "lower in PD", 14.5, BLUE, 600, "middle")
+marker(1, 5.6, 0.066, 6.4, 0.085)     # theta: PD curve above control
+marker(2, 8.4, 0.110, 8.4, 0.101)     # alpha peak (slowing)
+marker(3, 20.0, 0.050, 20.0, 0.020)   # beta: control curve above PD
 
 # legend (top-right inside plot)
 lx, ly = PX1 - 168, PY0 + 16
