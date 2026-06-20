@@ -129,6 +129,7 @@ T(180, 408, "the one knob", 13.5, SLATE, 500, "start")
 
 # ================================================================ ZONE 2: THE DIAL
 T(420, 30, "TURN τ_inh UP, THE RHYTHM SLOWS", 14.5, GREY, 600)
+T(420, 50, "each point = the model run at one knob setting", 12, MUTE, 400)
 
 curve = pd.read_csv(os.path.join(REPO, "results", "peak_curve.csv"))
 curve = curve[(curve.tau_inh_ms >= 12) & (curve.tau_inh_ms <= 26)]
@@ -158,8 +159,9 @@ for t in [14, 18, 22, 26]:
 for h in [8, 10, 12]:
     line(DX0 - 5, DY(h), DX0, DY(h), "#cbd5e1", 1.2)
     T(DX0 - 9, DY(h) + 4, str(h), 12.5, MUTE, 400, "end")
-T((DX0 + DX1) / 2, DY1 + 44, "τ_inh  (ms)", 14, SLATE, 500, "middle")
-T(434, (DY0 + DY1) / 2, "alpha peak  (Hz)", 14, SLATE, 500, "middle",
+T((DX0 + DX1) / 2, DY1 + 44, "τ_inh — the inhibitory knob (ms)", 14, SLATE, 500, "middle")
+T((DX0 + DX1) / 2, DY1 + 62, "longer τ = slower, more sluggish inhibition", 11.5, MUTE, 400, "middle")
+T(434, (DY0 + DY1) / 2, "alpha rhythm (Hz)", 14, SLATE, 500, "middle",
   extra=f' transform="rotate(-90 434 {(DY0+DY1)/2:.0f})"')
 # the tuning curve
 pts = " L ".join(f"{DX(t):.1f} {DY(h):.1f}" for t, h in zip(curve.tau_inh_ms, curve.simulated_peak_hz))
