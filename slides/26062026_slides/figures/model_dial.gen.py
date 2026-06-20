@@ -205,8 +205,8 @@ def wave(col, cy, amp, color, name, hz):
     T(WX1, cy - amp - 18, f"{hz}", 14, color, 500, "end")
 
 
-wave("control", 132, 34, BLUE, "Control", "τ 18 ms · 9.5 Hz")
-wave("pd", 286, 34, CORAL, "Parkinson's", "τ 22 ms · 8.0 Hz")
+wave("control", 132, 34, BLUE, "Control", "τ 18.25 ms")
+wave("pd", 286, 34, CORAL, "Parkinson's", "τ 21.5 ms")
 T((WX0 + WX1) / 2, 372, "same 0.82 s window — the patient rhythm fits in fewer cycles",
   12.5, MUTE, 400, "middle")
 

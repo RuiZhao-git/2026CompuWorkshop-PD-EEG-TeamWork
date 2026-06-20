@@ -19,7 +19,7 @@ sys.path.insert(0, REPO)
 
 from src.model import build_network, peak_frequency  # noqa: E402
 
-TAU_CONTROL, TAU_PD = 18.0, 22.0
+TAU_CONTROL, TAU_PD = 18.25, 21.5   # the fitted Control / PD median tau_inh
 SKIP_MS, WIN_MS, N = 3000, 820, 256
 
 

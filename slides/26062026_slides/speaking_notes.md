@@ -43,8 +43,9 @@ tau_inh sets the frequency. Turn the knob up and the alpha peak drops smoothly a
 the way down the curve. Control sits near 18 milliseconds and 9.25 hertz; the
 patient setting is about three and a quarter milliseconds longer and brings the
 rhythm down to 8 hertz, the slowing we measured in the data. The right panel shows
-what that looks like: two real simulated waveforms, control in blue at 9.5 hertz,
-patient in coral at 8 hertz, same window, fewer cycles. So in the model the entire
+what that looks like: two real simulated waveforms at those two settings, control
+in blue and patient in coral, same window, but the patient rhythm fits in fewer
+cycles. So in the model the entire
 healthy-to-patient change is one number.
 
 ---
