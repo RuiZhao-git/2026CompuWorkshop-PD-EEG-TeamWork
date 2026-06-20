@@ -72,16 +72,18 @@ main, fifty commits in total, and main reproduces every result and this deck.
 
 ## Slide 4, Does the model separate patients from controls?
 
-Now we test the model the same way we tested the data. The left panel shows the
-fitted tau_inh for every subject, controls in blue, patients in red. The patient
-median is about three and a quarter milliseconds higher, and a one-sided
-Mann-Whitney test gives a p-value of about 0.0002, so the groups are clearly
-separated in the model parameter. The natural worry is that this is just an
-artefact of the fitting. The right panel rules that out. We simulated the model
-at known tau values and fitted them back. The points sit on the diagonal, the
-fit is unbiased, and its precision is about half a millisecond, far smaller than
-the three-millisecond group difference. So the separation is real, not a fitting
-artefact.
+This is the model-level result, told honestly. On the left, the fitted tau_inh for
+every subject, controls in blue, patients in coral. The medians differ by three
+and a quarter milliseconds, highly significant, but notice the distributions
+overlap a lot: this separates the two groups on average, not individual patients,
+and it re-expresses the alpha slowing from the data in model units. So is the
+difference real, or an artefact of the fitting? On the right we check. We simulate
+the model at known tau values and fit them back: the points sit on the diagonal,
+the fit is unbiased, with a typical error of about half a millisecond. The bar at
+the bottom makes the point, the three-and-a-quarter-millisecond group difference
+is about six times that fitting error, so it is a real parameter shift. What the
+model genuinely adds here is not new statistical evidence, it is the mechanistic
+reading plus this validated, unbiased fit.
 
 ---
 

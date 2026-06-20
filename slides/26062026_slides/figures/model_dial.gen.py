@@ -159,7 +159,7 @@ for t in [14, 18, 22, 26]:
 for h in [8, 10, 12]:
     line(DX0 - 5, DY(h), DX0, DY(h), "#cbd5e1", 1.2)
     T(DX0 - 9, DY(h) + 4, str(h), 12.5, MUTE, 400, "end")
-T((DX0 + DX1) / 2, DY1 + 44, "τ_inh — the inhibitory knob (ms)", 14, SLATE, 500, "middle")
+T((DX0 + DX1) / 2, DY1 + 44, "τ_inh, the inhibitory knob (ms)", 14, SLATE, 500, "middle")
 T((DX0 + DX1) / 2, DY1 + 62, "longer τ = slower, more sluggish inhibition", 11.5, MUTE, 400, "middle")
 T(434, (DY0 + DY1) / 2, "alpha rhythm (Hz)", 14, SLATE, 500, "middle",
   extra=f' transform="rotate(-90 434 {(DY0+DY1)/2:.0f})"')
@@ -207,7 +207,7 @@ def wave(col, cy, amp, color, name, hz):
 
 wave("control", 132, 34, BLUE, "Control", "τ 18.25 ms")
 wave("pd", 286, 34, CORAL, "Parkinson's", "τ 21.5 ms")
-T((WX0 + WX1) / 2, 372, "same 0.82 s window — the patient rhythm fits in fewer cycles",
+T((WX0 + WX1) / 2, 372, "same 0.82 s window, the patient rhythm fits in fewer cycles",
   12.5, MUTE, 400, "middle")
 
 P.append("</svg>")
