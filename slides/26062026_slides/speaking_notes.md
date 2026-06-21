@@ -1,89 +1,78 @@
 # Speaking notes, final presentation (26.06)
 
-Verbatim spoken script, one block per slide. Read it as-is; the content matches
-exactly what is on each slide. No greetings or filler. These are also embedded as
-presenter notes in `26062026_slides.md` (visible in VS Code Marp presenter view).
+Speaking cues, one block per slide, in bullet form. Expand each point in your own
+words while presenting; the bullets match what is on each slide. These same cues
+are embedded as presenter notes in `26062026_slides.md` (VS Code Marp presenter
+view). Slides up to "Does the model separate ..." are written here; Outlook and
+Take-aways are owned by the team.
 
 ---
 
 ## Title
 
-This is our final presentation on cortical EEG slowing in resting-state
-Parkinson's disease. We will show our hypothesis, the model we built, how the
-code turns a healthy model into a patient model, the statistical result, where
-we would go next, and what each of us took from the course.
+- Final presentation: cortical EEG slowing in resting-state Parkinson's.
+- Plan: hypothesis, the model, the code, the result, outlook, take-aways.
 
 ---
 
 ## Slide 1, Hypotheses
 
-Our three predictions from the literature, all in one figure: the average
-posterior power spectrum, controls in blue, patients in coral, with the standard
-error shaded. You can read the three changes straight off the curves. In the
-theta band, four to eight hertz, the patient curve sits above the control curve,
-so theta power is higher. Around the alpha peak the patient curve is shifted to
-the left, so the alpha rhythm slows. In the beta band, thirteen to thirty hertz,
-the control curve is above the patient curve, so beta power is lower. The line
-below gives the numbers: on 149 subjects the alpha peak drops from 9.25 to 8.00
-hertz, theta up and beta down are both highly significant. We list a fourth
-prediction too, alpha power, greyed out because it is a null result: alpha power
-does not change. That null is the point, the change is in frequency, not
-amplitude, which is why we say alpha peak slowing rather than alpha loss.
+- One figure: average posterior power spectrum, Control (blue) vs PD (coral), ±SEM.
+- Read the three predicted changes straight off the curves:
+  - theta (4 to 8 Hz): PD curve above Control, so theta power is higher.
+  - alpha peak: PD curve shifted left, so the rhythm slows.
+  - beta (13 to 30 Hz): Control curve above PD, so beta power is lower.
+- Numbers, 149 subjects: alpha peak 9.25 to 8.00 Hz; theta up and beta down both
+  highly significant.
+- Fourth prediction, greyed out: alpha power is a null, it does not change.
+- The point: the change is in frequency, not amplitude, so we say alpha slowing,
+  not alpha loss.
 
 ---
 
 ## Slide 2, The model
 
-To explain the slowing we built a Wilson-Cowan network. The left panel is the
-mechanism: eight cortical nodes, all coupled, and inside each one an excitatory
-population E and an inhibitory population I. E excites I, I inhibits E, and that
-back-and-forth produces the rhythm. The inhibition has a time constant, tau_inh,
-and that is the one knob we turn. The middle panel is the dial: it shows how
-tau_inh sets the frequency. Turn the knob up and the alpha peak drops smoothly all
-the way down the curve. Control sits near 18 milliseconds and 9.25 hertz; the
-patient setting is about three and a quarter milliseconds longer and brings the
-rhythm down to 8 hertz, the slowing we measured in the data. The right panel shows
-what that looks like: two real simulated waveforms at those two settings, control
-in blue and patient in coral, same window, but the patient rhythm fits in fewer
-cycles. So in the model the entire
-healthy-to-patient change is one number.
+- A Wilson-Cowan network explains the slowing.
+- Left, the mechanism: 8 coupled nodes; in each, E excites I and I inhibits E, and
+  that loop produces the rhythm. The inhibition has a time constant, tau_inh, the
+  one knob we turn.
+- Middle, the dial: tau_inh sets the frequency; turn it up and the alpha peak drops
+  down the curve.
+  - Control about 18 ms to 9.25 Hz; PD about +3.25 ms longer to 8 Hz, the slowing
+    we measured.
+- Right, the rhythm: two real simulated waveforms; same window, PD fits in fewer
+  cycles.
+- Takeaway: the whole healthy-to-patient change is one number.
 
 ---
 
 ## Slide 3, Code & repository
 
-Across the top is the pipeline: the resting EEG of 149 people flows through six
-numbered scripts, from extracting the features, to fitting each person a model
-parameter from their alpha peak, to comparing the two groups. The three smaller
-scripts below build the lookup curve the fit uses, test the data directly, and
-validate the fit on synthetic data. The point to land is the highlighted box: the
-model is built once, and only one number turns a healthy model into a patient one,
-the inhibitory time constant tau_inh.
-
-On the lower left is the repository, organised into the numbered scripts, the
-reusable modules, and a results folder that every run writes into. Below it, a
-terminal makes the reproducibility concrete: every number in this talk is the real
-output of running one script, and each run writes the exact file you see.
-
-On the lower right is the version control: we developed on branches merged into
-main, fifty commits in total, and main reproduces every result and this deck.
+- Top, the pipeline: the EEG of 149 people flows through six numbered scripts:
+  extract features, fit each person a tau from their alpha peak, compare the groups.
+  (02 builds the lookup curve, 04 tests the data directly, 06 validates the fit.)
+  - Key box: the model is built once; one number, tau_inh, turns healthy into patient.
+- Lower-left, the repository: numbered scripts, reusable modules, a results folder
+  every run writes into.
+  - Terminal: every number in this talk is the real output of one script, and each
+    run writes the exact file shown.
+- Lower-right, version control: branches merged into main, fifty commits; main
+  reproduces every result and this deck.
 
 ---
 
 ## Slide 4, Does the model separate patients from controls?
 
-This is the model-level result, told honestly. On the left, the fitted tau_inh for
-every subject, controls in blue, patients in coral. The medians differ by three
-and a quarter milliseconds, highly significant, but notice the distributions
-overlap a lot: this separates the two groups on average, not individual patients,
-and it re-expresses the alpha slowing from the data in model units. So is the
-difference real, or an artefact of the fitting? On the right we check. We simulate
-the model at known tau values and fit them back: the points sit on the diagonal,
-the fit is unbiased, with a typical error of about half a millisecond. The bar at
-the bottom makes the point, the three-and-a-quarter-millisecond group difference
-is about six times that fitting error, so it is a real parameter shift. What the
-model genuinely adds here is not new statistical evidence, it is the mechanistic
-reading plus this validated, unbiased fit.
+- The model-level result, told honestly.
+- Left, the separation: fitted tau_inh per subject. Medians +3.25 ms apart
+  (Control 18.25, PD 21.5), highly significant. But the distributions overlap, so
+  this separates the groups on average, not individual patients. It re-expresses
+  the measured alpha slowing in model units.
+- Right, parameter recovery: put a known tau in, fit it back; the points land on
+  the diagonal, so the fit is unbiased, with a typical error of about half a
+  millisecond.
+- What the model adds: not new statistical evidence, but the mechanistic reading
+  plus this validated, unbiased fit.
 
 ---
 
