@@ -94,9 +94,6 @@ or medication.
 
 ## Slide 6, What we took away
 
-Each of us says our single biggest take-away from the course.
-(Each member states their own take-away in one sentence. Replace the four
-placeholders on the slide before the talk.)
 
 ---
 
