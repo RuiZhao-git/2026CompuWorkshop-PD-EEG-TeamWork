@@ -14,7 +14,7 @@ CORAL = "#f1744e"    # bright coral
 BASE = "#3b4759"     # faint baseline on dark
 MUTE = "#8b97a8"
 
-W, H = 1040, 300
+W, H = 1040, 294
 P = [f'<svg viewBox="0 0 {W} {H}" xmlns="http://www.w3.org/2000/svg" font-family="{SANS}">']
 
 x0, x1 = 214, 1004
@@ -41,12 +41,9 @@ def wave(yc, cyc, amp, color, label):
 
 
 # Control: many tight cycles (fast)
-wave(92, 14, 44, BLUE, "Control")
+wave(86, 14, 44, BLUE, "Control")
 # Parkinson's: far fewer cycles in the same window (slow)
-wave(214, 7, 44, CORAL, "Parkinson's")
-
-# one quiet line, big enough to read
-T(W / 2, 286, "same window  ·  the resting rhythm slows", 16, MUTE, 500, "middle", 0.3)
+wave(208, 7, 44, CORAL, "Parkinson's")
 
 P.append("</svg>")
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "title_hero.svg")
