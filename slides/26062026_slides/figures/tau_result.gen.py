@@ -24,7 +24,7 @@ GREY = "#64748b"
 MUTE = "#94a3b8"
 LINE = "#e2e8f0"
 
-W, H = 1180, 426
+W, H = 1180, 500
 P = []
 
 
@@ -56,7 +56,7 @@ P.append(f'<marker id="sh" markerWidth="9" markerHeight="9" refX="6.5" refY="4.5
          f'<path d="M0,0 L0,9 L8,4.5 z" fill="{GREY}"/></marker>')
 P.append('</defs>')
 P.append(f'<rect width="{W}" height="{H}" rx="16" fill="#ffffff"/>')
-line(564, 34, 564, 400, LINE, 1.4)
+line(564, 34, 564, 474, LINE, 1.4)
 
 # ============================================================ LEFT: THE SEPARATION
 T(24, 28, "THE SEPARATION", 14.5, GREY, 600)
@@ -68,7 +68,7 @@ pdt = ft[ft.group == "PD"].fitted_tau_ms.values
 
 TMIN, TMAX = 11, 27
 DX0, DX1 = 84, 540
-DY0, DY1 = 92, 332
+DY0, DY1 = 100, 400
 
 
 def DX(t):
@@ -110,8 +110,8 @@ raw(f'<rect x="{DX0+10}" y="{DY0+10}" width="15" height="4.5" rx="2" fill="{BLUE
 T(DX0 + 32, DY0 + 18, "Control", 12.5, BLUE, 600)
 raw(f'<rect x="{DX0+10}" y="{DY0+28}" width="15" height="4.5" rx="2" fill="{CORAL}"/>')
 T(DX0 + 32, DY0 + 36, "PD", 12.5, CORAL, 600)
-T(24, 392, "Control 18.25 vs PD 21.5 ms at the median.", 13, SLATE, 500)
-T(24, 412, "The distributions overlap: a random PD is higher ≈ 68% of the time.", 12.5, GREY, 400)
+T(24, 458, "Control 18.25 vs PD 21.5 ms at the median.", 13, SLATE, 500)
+T(24, 478, "The distributions overlap: a random PD is higher ≈ 68% of the time.", 12.5, GREY, 400)
 
 # ============================================================ RIGHT: PARAMETER RECOVERY
 T(588, 28, "PARAMETER RECOVERY", 14.5, GREY, 600)
@@ -120,7 +120,7 @@ T(788, 28, "put a known τ in, fit it back", 12.5, MUTE, 400)
 rec = pd.read_csv(os.path.join(REPO, "results", "tau_recovery.csv"))
 RMIN, RMAX = 11, 29
 RX0, RX1 = 636, 912
-RY0, RY1 = 88, 368
+RY0, RY1 = 110, 400
 
 
 def RX(t):
@@ -150,9 +150,9 @@ for _, r in rec.iterrows():
 
 # summary to the right of the scatter
 sx = 940
-T(sx, 200, "The fit is unbiased.", 16, INK, 600)
-T(sx, 232, "mean error  −0.1 ms", 13.5, SLATE, 400)
-T(sx, 256, "typical error  ±0.5 ms", 13.5, SLATE, 400)
+T(sx, 244, "The fit is unbiased.", 16, INK, 600)
+T(sx, 276, "mean error  −0.1 ms", 13.5, SLATE, 400)
+T(sx, 300, "typical error  ±0.5 ms", 13.5, SLATE, 400)
 
 P.append("</svg>")
 out = os.path.join(HERE, "tau_result.svg")
