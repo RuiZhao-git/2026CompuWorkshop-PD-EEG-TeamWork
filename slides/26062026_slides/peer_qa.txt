@@ -1,0 +1,38 @@
+PEER Q&A: questions for the PD-EEG group, with our prepared answers
+
+Four questions an audience member could ask about our project, each with the answer we plan to give. They are written from a neutral listener's point of view, so they make no assumption about the asker's own project. Course rule is one question per asker; the other group has two members, so two of these are the core questions to hand over and two are spares. The answers mirror our deck (Why Wilson-Cowan, limitations, outlook), so they stay consistent with the talk.
+
+Lines below are unwrapped (one line per question and per answer) so they copy out cleanly.
+
+
+==================== Q1 (core) ====================
+
+Q: Why did you choose a Wilson-Cowan model, and why change just one parameter to go from healthy to patient instead of fitting several?
+
+A: We chose Wilson-Cowan because it is the simplest model where the rhythm is not put in by hand but emerges from a mechanism: each node has an excitatory and an inhibitory population, E drives I and I inhibits E, and that loop oscillates. The speed of the oscillation is set by how fast inhibition acts, the inhibitory time constant. So when we make inhibition slower, the rhythm slows, and we can point to a concrete biological cause. A purely phenomenological oscillator, like a Hopf model, would have frequency as a dial you just turn down, which re-labels the slowing without explaining it. As for one parameter: this is a hypothesis-driven test. We hypothesised the slowing is a single mechanistic change, so we hold everything else at standard values and vary only tau_inh. If one number reproduces the effect, that is a clean result. Adding more free parameters would make the fit less identifiable unless we also add more data to constrain them, which is our future direction.
+
+
+==================== Q2 (core) ====================
+
+Q: Your model uses a single, uniform 8-node network with all-to-all connections. How much does that simplification matter, and would a more realistic brain network change your result?
+
+A: The uniform all-to-all network is a deliberate simplification: we treat the cortex as flat and symmetric, which is enough to show the alpha-slowing mechanism but throws away regional differences. We think the core result, that a slower inhibitory time constant slows the rhythm, is robust to this, because the slowing comes from the local excitatory-inhibitory loop, not from the network layout. A more realistic network, a real brain connectome with different regional connections, is one of our main future directions: it would let us check whether the model also reproduces the spatial pattern across electrodes, and it could help the model capture the theta and beta changes that one parameter on a uniform network cannot. So we expect it to add realism rather than overturn the alpha result.
+
+
+==================== Q3 (spare) ====================
+
+Q: How do you know the group difference is really about inhibition, and not some other parameter producing the same slowing?
+
+A: Honestly, we cannot prove from the fit alone that the cause is inhibition specifically. This is an identifiability problem: a different change, for example weaker excitatory coupling or a different input drive, could in principle produce the same slowing. But we can say two things. First, the fit is not an artifact: we ran a parameter-recovery check, simulating the model at known tau values and fitting them back, and the recovery is unbiased with a typical error around half a millisecond, well below the three-and-a-quarter-millisecond group difference. So the difference is a real shift in the fitted parameter, not noise in the fitting. Second, what the model adds is a mechanistic reading plus a validated fit, not independent proof of the biology. Pinning the cause down to inhibition is future work: fitting richer targets, and linking the parameter to biological or clinical measures.
+
+
+==================== Q4 (spare) ====================
+
+Q: You also found theta and beta changes, but the model only reproduces the alpha slowing. Why focus on alpha?
+
+A: Because the alpha slowing and the theta and beta changes are different kinds of effect. The alpha slowing is a change in frequency: the peak moves from about 9.25 to 8 hertz, and that is exactly what our one knob controls, a slower inhibitory time constant gives a slower rhythm. The theta and beta changes are changes in power, in amplitude, not frequency, and a single frequency-setting parameter will not reproduce an amplitude change. To capture those we would need to vary more of the model, for example the excitatory and inhibitory weights, and fit more of the spectrum than just the peak. We were deliberate about scoping the model to the one effect it can mechanistically explain, and we flag the rest as the next step in the outlook.
+
+
+-------------------- delivery notes --------------------
+
+Rui best answers Q1 and Q3 (implementation detail); Q2 and Q4 anyone can take. Hand Q1 and Q2 over as the two core questions; keep Q3 and Q4 as spares. About 30 to 45 seconds per answer; they all match the deck, so no surprises.
