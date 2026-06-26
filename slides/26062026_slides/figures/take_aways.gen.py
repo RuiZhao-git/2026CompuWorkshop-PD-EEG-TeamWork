@@ -81,7 +81,7 @@ def card(x, y, w, h, name, color, theme, ikey, quote):
     T(x + 60, y + 31, theme.upper(), 12, color, 700, "start", 0.7)
     T(x + 60, y + 47, name, 16.5, INK, 700)
     ly = y + 74
-    for ln in wrap(quote, 74):
+    for ln in wrap("“" + quote + "”", 74):
         T(x + 22, ly, ln, 13.5, SLATE, 400)
         ly += 20
 
